@@ -4,7 +4,7 @@ describe("Block", () => {
   let data, lastBlock, block;
 
   beforeEach(() => {
-    data = "bar";
+    data = "foo";
     lastBlock = Block.genesis();
     block = Block.mineBlock(lastBlock, data);
   });
@@ -14,6 +14,6 @@ describe("Block", () => {
   });
 
   it("sets the `lastHash` to match the hash of the last block", () => {
-    expect(block.lastBlock).toEqual(lastBlock.hash);
+    expect(block.lastHash).toEqual(lastBlock.hash);
   });
 });
