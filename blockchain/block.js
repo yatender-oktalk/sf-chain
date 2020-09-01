@@ -2,12 +2,13 @@ var SHA256 = require("crypto-js/sha256");
 const { DIFFICULTY } = require("../config");
 
 class Block {
-  constructor(timestamp, lastHash, hash, data, nonce) {
+  constructor(timestamp, lastHash, hash, data, nonce, difficulty) {
     this.timestamp = timestamp;
     this.lastHash = lastHash;
     this.hash = hash;
     this.data = data;
     this.nonce = nonce;
+    this.difficulty = difficulty;
   }
 
   to_string() {
@@ -16,12 +17,20 @@ class Block {
     Last Hash: ${this.lastHash.substring(0, 10)}
     Hash: ${this.hash.substring(0, 10)}
     Nonce: ${this.nonce}
-    data: ${this.data}
+    Difficulty: ${this.difficulty}
+    Data: ${this.data}
     `;
   }
 
   static genesis() {
-    return new this("Genesis time", "----", "foo", [], 0);
+    return new this(
+      "Genesis time",
+      "----",
+      "klrje-lrakjer-ksd",
+      [],
+      0,
+      DIFFICULTY
+    );
   }
 
   static mineBlock(lastBlock, data) {
