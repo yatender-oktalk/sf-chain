@@ -1,5 +1,5 @@
 const ChainUtil = require("../chain-util");
-const { INITIAL_BALANCE } = require("..config");
+const { INITIAL_BALANCE } = require("../config");
 
 class Wallet {
   constructor() {
@@ -10,8 +10,9 @@ class Wallet {
 
   toString() {
     return `Wallet -
-      publicKey: ${this.publicKey.toString()}
-      balance: ${this.balance}
-    `;
+    publicKey : ${this.publicKey}
+    balance   : ${this.balance}`;
   }
 }
+
+module.exports = Wallet;
