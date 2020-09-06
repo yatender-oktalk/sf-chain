@@ -49,7 +49,7 @@ class Block {
     return new this(timestamp, lastHash, hash, data, nonce, difficulty);
   }
 
-  static hash(timestamp, lastHash, data, nonce) {
+  static hash(timestamp, lastHash, data, nonce, difficulty) {
     return SHA256(
       `${timestamp}${lastHash}${data}${nonce}${difficulty}`
     ).toString();
@@ -60,7 +60,7 @@ class Block {
     return Block.hash(timestamp, lastHash, data, nonce, difficulty);
   }
 
-  static adjustDifficulty(lastBlock, timestamp) {
+  static adjustDifficulty(lastBlock, current_time) {
     let { difficulty } = lastBlock;
     // raise if difference is less than MINE_RATE
     difficulty =
