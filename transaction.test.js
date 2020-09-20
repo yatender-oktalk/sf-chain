@@ -10,7 +10,7 @@ describe("Transaction", () => {
     transaction = Transaction.newTransaction(wallet, recipient, amount);
   });
 
-  it("ouputs the `amount` subtracted from the wallet balance", () => {
+  it("outputs the `amount` subtracted from the wallet balance", () => {
     expect(
       transaction.outputs.find((output) => output.address === wallet.publicKey)
         .amount
@@ -34,13 +34,3 @@ describe("Transaction", () => {
     });
   });
 });
-
-// Make sure to change the testing environment for Jest from the default mode to “node”. In package.json, add this rule:
-// ```
-// ...
-// "jest": {
-// "testEnvironment": "node"
-// },
-// ```
-
-// $ npm run test
