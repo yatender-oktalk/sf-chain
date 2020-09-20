@@ -1,4 +1,4 @@
-const Wallet = require(".");
+const Wallet = require("./index");
 const ChainUtil = require("../chain-util");
 
 class Transaction {
@@ -25,7 +25,7 @@ class Transaction {
       ]
     );
 
-    Transaction.signTransaction(transaction, Wallet);
+    Transaction.signTransaction(transaction, senderWallet);
 
     return transaction;
   }
