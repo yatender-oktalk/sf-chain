@@ -1,6 +1,6 @@
-const Transaction = require("./transaction");
+const Transaction = require("./wallet/transaction");
 
-const Wallet = require("./index");
+const Wallet = require("./wallet/index");
 
 describe("Transaction", () => {
   let transaction, wallet, recipient, amount;
@@ -10,5 +10,21 @@ describe("Transaction", () => {
     amount: 50;
     recipient: "r3c1p13nt";
     transaction: Transaction.newTransaction(wallet, recipient, amount);
+  });
+
+  it("outputs the `amount` subtracted from the balance", () => {
+    expect(
+      transaction.outputs
+        .find(transaction.output.address === wallet.publicKey)
+        .amount.toEqual(wallet.balance - amount)
+    );
+  });
+
+  it("outputs the `amount` added to the recipient", () => {
+    expect(
+      transaction.outputs
+        .find(transaction.output.address === recipient)
+        .amount.toEqual(amount)
+    );
   });
 });
