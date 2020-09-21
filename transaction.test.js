@@ -24,7 +24,6 @@ describe("Transaction", () => {
   });
 
   it("inputs the balance of the wallet", () => {
-    console.log(wallet);
     expect(transaction.input.amount).toEqual(wallet.balance);
   });
 

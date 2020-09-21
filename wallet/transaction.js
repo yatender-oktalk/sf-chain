@@ -1,4 +1,3 @@
-const Wallet = require("./index");
 const ChainUtil = require("../chain-util");
 
 class Transaction {
